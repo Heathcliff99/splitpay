@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <meta http-equiv="refresh" content="1" > 
+    <!--<meta http-equiv="refresh" content="1" >--> 
     <head>
-        <title>Geovent</title>
+        <title>Splipay</title>
         <style type="text/css">
             body {
                 margin: 0px;
@@ -66,26 +66,35 @@
                 
             }
         </style>
+        <script>
+            function checkLogIn () {
+                alert(document.getElementById("logInForm").elements["usrn"].value);
+                if (document.getElementById("logIn").usrn.value != null && document.getElementById("logIn").pwd.value != null) {
+                    alert("not empty");
+                }
+            }
+            setTimeout(checkLogIn (), 5000);
+        </script>
     </head>
     <body>
         <header>
         <h1>Splitpay</h1>
-            <form action="logIn.php">
-                <div id="logIn">
-                    <div>
-                        <br>
-                        Username<br>
-                        <input type="text" name="usrn">
-                    </div>
-                    <div class="placeholder"></div>
-                    <div>
-                        <br>
-                        Password<br>
-                        <input type="text" name="pwd">
-                    </div>
-                </div><br>
-                <input type="submit" value="Log in">
-            </form>
+        <form action="logIn.php" id="logInForm">
+            <div id="logIn">
+                <div>
+                    <br>
+                    Username<br>
+                    <input type="text" name="usrn">
+                </div>
+                <div class="placeholder"></div>
+                <div>
+                    <br>
+                    Password<br>
+                    <input type="text" name="pwd">
+                </div>
+            </div><br>
+            <input type="submit" value="Log in">
+        </form>
         </header>
         <div id="signUp">
             <br><br><br><br><br><br>
