@@ -1,116 +1,86 @@
+<?php 
+include("include.php");
+if (isset($_COOKIE["splipayNameCookie"])) {
+    $_SESSION["fName"] = $_COOKIE["splipayNameCookie"];
+    header("Location: home.php");
+}
+?>
 <!DOCTYPE html>
 <html>
-    <!--<meta http-equiv="refresh" content="1" >--> 
+    <!--<meta http-equiv="refresh" content="1" >-->
     <head>
         <title>Splipay</title>
-        <style type="text/css">
-            body {
-                margin: 0px;
-                overflow: hidden;
-            }
-            h1 {
-                position: absolute;
-                left: 70px;
-                margin-top: 28px;
-            }
-            #logIn {
-                display: flex; 
-            }
-            form[action="logIn.php"]{
-                position: absolute;
-                right: 35px;
-            }
-            form[action="logIn.php"] input[type="submit"]{
-                width: 60px;
-                display: block;
-                margin-left: auto ;
-                margin-right: auto ;
-            }
-            h3 {
-                text-align: center;
-            }
-            .placeholder {
-                width: 10px;
-            }
-            header {
-                color: #66CCFF;
-                display: block;
-                background-color: #993300;
-                width: 100%;
-                height: 110px;
-            }
-            #signUp {
-                text-align: center;
-                /*background-color: green;*/
-                width: 600px;
-                margin-left: auto ;
-                margin-right: auto ;
-            }
-            #signUp form {
-                /*background-color: red;*/
-                width: 100%;
-            }
-            #signUp form div {
-                display: inline;
-                /*background-color: blue;*/
-                width: 400px;
-                margin-left: auto ;
-                margin-right: auto ;
-            }
-            #email {
-                width: 315px;
-            }
-            input {
-                border-radius: 5px;
-                border-color: gray;
-                
-            }
-        </style>
-        <script>
-            function checkLogIn () {
-                alert(document.getElementById("logInForm").elements["usrn"].value);
-                if (document.getElementById("logIn").usrn.value != null && document.getElementById("logIn").pwd.value != null) {
-                    alert("not empty");
-                }
-            }
-            setTimeout(checkLogIn (), 5000);
-        </script>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <header>
         <h1>Splitpay</h1>
-        <form action="logIn.php" id="logInForm">
+        <form action="logIn.php" method="post" id="logInForm">
             <div id="logIn">
                 <div>
                     <br>
-                    Username<br>
-                    <input type="text" name="usrn">
+                    First name<br>
+                    <input type="text" name="fName" id="1" autofocus="true">
                 </div>
                 <div class="placeholder"></div>
                 <div>
                     <br>
                     Password<br>
-                    <input type="text" name="pwd">
+                    <input type="password" name="pwd" id="2">
                 </div>
             </div><br>
-            <input type="submit" value="Log in">
+            <input type="submit" value="Log in" id="3">
+                <?php 
+                    if (isset($_SESSION["logInError"])) {
+                        if ($_SESSION["logInError"] === true) {
+                            $_SESSION["logInError"] = false;
+                            echo ("<div id='errorMessage'><br>I don't know you</div>");
+                        } 
+                    }
+                ?>
         </form>
         </header>
         <div id="signUp">
             <br><br><br><br><br><br>
             <h2>Sign up:</h2><br><br>
-            <form action="signUp.php">
+            <form action="signUp.php" method="post">
                 <div>
-                    <input type="text" name="fName" placeholder="First name">
+                    <input type="text" name="fName" placeholder="First name" id="4">
                     &nbsp;
-                    <input type="text" name="lName" placeholder="Last name"><br><br>
-                    <input id="email" type="email" name="email" placeholder="Email"><br><br>
-                    <input type="password" name="pw" placeholder="Password">
+                    <input type="text" name="lName" placeholder="Last name" id="5"><br><br>
+                    <input type="email" name="email" placeholder="Email" id="email"><br><br>
+                    <input type="password" name="pw" placeholder="Password" id="7">
                     &nbsp;
-                    <input type="password" name="pw2" placeholder="Re-enter password"><br><br>
-                    <input type="submit" value="Sign up">
+                    <input type="password" name="pw2" placeholder="Re-enter password" id="8"><br><br>
+                    <input type="submit" value="Sign up" disabled="true" title="You shall not pass!" id="9">
                 </div>
             </form>
         </div>
     </body>
+    <script>  
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        function checkSignUp () {
+            if (re.test(document.getElementById("email").value) && document.getElementById("4").value !== "" && document.getElementById("5").value !== "" && 
+                    document.getElementById("7").value !== "" && document.getElementById("8").value === document.getElementById("7").value) {
+                document.getElementById("9").disabled = false;
+                document.getElementById("9").title = "";
+            }
+            else {
+                document.getElementById("9").disabled = true;
+                document.getElementById("9").title = "You shall not pass! ";
+            }
+        }
+        setInterval(checkSignUp, 1);
+        function checkLogIn () {
+            if (document.getElementById("1").value !== "" && document.getElementById("2").value !== "") {
+                document.getElementById("3").disabled = false;
+                document.getElementById("3").title = "";
+            }
+            else {
+                document.getElementById("3").disabled = true;
+                document.getElementById("3").title = "You shall not pass! ";
+            }
+        }
+        setInterval(checkLogIn, 1);
+    </script>
 </html>

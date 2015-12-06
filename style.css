@@ -1,0 +1,107 @@
+#errorMessage {
+    color: red;
+    width: 109px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+h1 {
+    position: absolute;
+    left: 70px;
+    margin-top: 28px;
+}
+#logIn {
+    display: flex; 
+}
+form[action="logIn.php"]{
+    position: absolute;
+    right: 35px;
+}
+form[action="logIn.php"] input[type="submit"]{
+    width: 60px;
+    display: block;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+h3 {
+    text-align: center;
+}
+.placeholder {
+    width: 10px;
+}
+header {
+    color: #66CCFF;
+    display: block;
+    background-color: #993300;
+    width: 100%;
+    height: 110px;
+}
+#signUp {
+    text-align: center;
+    /*background-color: green;*/
+    width: 600px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+#signUp form {
+    /*background-color: red;*/
+    width: 100%;
+}
+#signUp form div {
+    display: inline;
+    /*background-color: blue;*/
+    width: 400px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+#email {
+    width: 315px;
+}
+input {
+    text-align: center;
+    border-color: gray;
+    border-width: 1px;
+}
+#dropDown {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-family: Monospace;
+    height: 30px;
+    color: black;
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    text-align: center;
+    background-color: white;
+}
+#dropDown2 {
+    align-self: center;
+}
+#dropDownElement1 {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-family: Monospace;
+    height: 30px;
+    color: black;
+    position: absolute;
+    right: 15px;
+    top: 70px;
+    width: 86px;
+    text-align: center;
+    background-color: white;
+}
+#dropDownElements {
+    display: none;
+}
+#asdf {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    right: 15px;
+}
